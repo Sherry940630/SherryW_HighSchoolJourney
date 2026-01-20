@@ -23,7 +23,6 @@ body
 /* 左右頁 */
 .page 
 {
-    width: 48%;
     padding: 20px;
     box-sizing: border-box;
     font-size:20px;
@@ -32,12 +31,14 @@ body
 /* 左頁 */
 .left 
 {
+    width: 28%;
     background-color: #e2f8ff;
 }
 
 /* 右頁 */
 .right 
 {
+    width: 68%;
     background-color: #eeeeff;
 }
 
@@ -68,11 +69,10 @@ body
 {
     white-space: nowrap; /*不換行*/
     background-color: #ffb6c1;
-    color: black;
     text-decoration: none;
     padding: 10px 16px;
     margin-bottom: 10px;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 10px 10px 0; /*角角圓圓的*/
 }
 
 .sub-tabs 

@@ -9,13 +9,14 @@
 </head>
 
 <body>
+
     <div class="book">
         <div class="page left">
             <p>
                 王之諠的學習歷程<br>
                 <img 
                 src="images\self\testSushiPicture.webp" 
-                width = 300
+                width = 320
                 >
             </p>
         </div>
@@ -42,12 +43,44 @@
         </div>
 
         <div class="tabs">
-            <a href="index.html">主頁</a>
-            <a href="unity.html">Unity遊戲</a>
-            <a href="cpp.html">C++刷題</a>
-            <a href="blender.html">Blender建模</a>
-            <a href="math.html">數學</a>
+            <div class="tab-group">
+                <button class="tab main-tab">主頁</button>
+            </div>
+            
+            <div class="tab-group">
+                <button class="tab main-tab">Unity遊戲</button>
+                <div class="sub-tabs">
+                    <a href="#">Bell</a>
+                    <a href="#">踩地雷</a>
+                </div>
+            </div>
+
+            <div class="tab-group">
+                <button class="tab main-tab">C++刷題</button>
+                <div class="sub-tabs">
+                    <a href="#">ZeroJudge</a>
+                    <a href="#">LeetCode</a>
+                </div>
+            </div>
+
+            <div class="tab-group">
+                <button class="tab main-tab">Blender建模</button>
+                <div class="sub-tabs">
+                    <a href="#">甜甜圈</a>
+                    <a href="#">手槍</a>
+                </div>
+            </div>
+
+            <div class="tab-group">
+                <button class="tab main-tab">數學</button>
+                <div class="sub-tabs">
+                    <a href="#">筆記</a>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

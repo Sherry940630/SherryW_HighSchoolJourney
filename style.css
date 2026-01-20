@@ -60,9 +60,11 @@ body
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    cursor: pointer;
 } 
 
-.tabs a 
+.tab
 {
     white-space: nowrap; /*不換行*/
     background-color: #ffb6c1;
@@ -72,4 +74,30 @@ body
     margin-bottom: 10px;
     border-radius: 0 10px 10px 0;
 }
+
+.sub-tabs 
+{
+  display: none;
+  margin-left: 1px;
+  margin-bottom: 10px;
+}
+
+.sub-tabs a 
+{
+  display: block;
+  background-color: #ffd6de;
+  padding: 8px 14px;
+  margin-top: 6px;
+  border-radius: 0 8px 8px 0;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+}
+
+.tab-group.open .sub-tabs 
+{
+  display: block;
+}
+
+
 

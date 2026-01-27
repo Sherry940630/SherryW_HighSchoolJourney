@@ -114,5 +114,47 @@ body
   display: block;
 }
 
+/* 主頁那些展開的list東東 */
+.expand-content 
+{
+    display: none;
+    overflow: auto;
+    transition: max-height 0.3s ease;
+    margin-top: 1px;    
+    padding: 4px 4px;
+    background-color: #f0f0f0;
+    border-left: 3px solid #ffb6c1;
+}
+.expand-content.show 
+{
+    display: block;     /* 顯示 */
+    max-height: 500px;
+}
+
+button.expand-btn 
+{
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    cursor: pointer;
+    text-align: left;
+}
+
+/* 註：以下這些都沒有用？？？ */
+
+#home-right h3 {
+    margin: 0 0 5px 0; /* 上 0，右 0，下 5px，左 0 */
+}
+
+#home-right ul {
+    margin: 0 0 10px 20px; /* 上 0，下 10px，左縮排 20px */
+    padding: 0;            /* 清掉預設 padding */
+}
+
+#home-right li {
+    margin: 0 0 4px 0;     /* li 之間間距 */
+    padding: 0;
+}
 
 

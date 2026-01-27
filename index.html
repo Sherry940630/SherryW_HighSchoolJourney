@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     
-    <title>My Book Website</title>
+    <title>王之諠的學習歷程</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,46 +11,40 @@
 <body>
 
     <div class="book">
-        <div class="page left">
-            <p>
-                王之諠的學習歷程<br>
-                <img 
-                src="images\self\testSushiPicture.webp" 
-                width = 160
-                >
-            </p>
+        <div class="page left" id="leftPage">
         </div>
 
         <div class="spine">
             書脊
         </div>
 
-        <div class="page right">
-            <p>
-            重大證照：<br>
-            多益TOEIC 960分<br>
-            全民英檢GEPT 中級<br>
-            全國技術士技能檢定 電腦硬體裝修 乙級<br>
-            全國技術士技能檢定 網路架設 丙級<br><br>
-
-            重大比賽得獎：<br>
-            教育部全國英語演講比賽 優勝<br>
-            花蓮縣文化局少年選書師 第一名<br>
-            花蓮縣英文造句 特優<br><br>
-
-            興趣：（這裡打算放圓餅圖）
-            </p>
+        <div class="page right" id="rightPage">
         </div>
 
         <div class="tabs">
             <div class="tab-group">
-                <button class="tab main-tab">主頁</button>
+                <button class="tab main-tab"
+                    onclick="loadPage(
+                        'BookmarkPages/Home.html',
+                        '#home-left',
+                        '#home-right'
+                    )">
+                    主頁
+                </button>
             </div>
             
             <div class="tab-group">
                 <button class="tab main-tab">Unity遊戲</button>
                 <div class="sub-tabs">
-                    <a href="#">Bell</a>
+                    <a href="javascript:void(0)"
+                        onclick="loadPage
+                        (
+                            'BookmarkPages/Bell.html',
+                            '#bell-left',
+                            '#bell-right'
+                        )">
+                        Bell
+                    </a>
                     <a href="#">踩地雷</a>
                 </div>
             </div>
@@ -64,6 +58,21 @@
             </div>
 
             <div class="tab-group">
+                <button class="tab main-tab">網頁</button>
+                <div class="sub-tabs">
+                    <a href="#">現在這個</a>
+                    <a href="#">風景裡的小事</a>
+                </div>
+            </div>
+
+            <div class="tab-group">
+                <button class="tab main-tab">大型語言模型</button>
+                <div class="sub-tabs">
+                    <a href="#">Nico</a>
+                </div>
+            </div>
+
+            <div class="tab-group">
                 <button class="tab main-tab">Blender建模</button>
                 <div class="sub-tabs">
                     <a href="#">甜甜圈</a>
@@ -72,9 +81,17 @@
             </div>
 
             <div class="tab-group">
-                <button class="tab main-tab">數學</button>
+                <button class="tab main-tab">Ibispaint畫畫</button>
                 <div class="sub-tabs">
-                    <a href="#">筆記</a>
+                    <a href="#">a</a>
+                    <a href="#">b</a>
+                </div>
+            </div>
+
+            <div class="tab-group">
+                <button class="tab main-tab">心靈成長</button>
+                <div class="sub-tabs">
+                    <a href="#">a</a>
                 </div>
             </div>
 

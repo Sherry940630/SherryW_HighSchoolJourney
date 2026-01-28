@@ -141,6 +141,45 @@ button.expand-btn
     text-align: left;
 }
 
+.block 
+{
+    border: 2px solid #333;
+    margin-top: 6px;
+    height: 140px;        /* 固定高度 */
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.block-small 
+{
+    height: 120px;
+}
+
+.block-large 
+{
+    height: 200px;   /* 解題思路用這個 */
+}
+
+
+.block h3 
+{
+    margin: 0;
+    padding: 6px;
+    background-color: #ddd;
+    font-size: 18px;
+}
+
+.block-content 
+{
+    font-size: 18px;
+    margin: 0;
+    padding: 8px;
+    overflow-y: auto;    
+    flex: 1;
+}
+
+
 /* 註：以下這些都沒有用？？？ */
 
 #home-right h3 {

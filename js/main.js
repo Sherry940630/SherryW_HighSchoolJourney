@@ -43,6 +43,15 @@ function loadPage(path, leftId, rightId)
 
             rightPage.innerHTML =
                 temp.querySelector(rightId).innerHTML;
+
+            if (path.includes("Zerojudge")) 
+            {
+                bindZeroJudgeSelect();
+            } 
+            else if (path.includes("Leetcode")) 
+            {
+                bindLeetcodeSelect();
+            }
         });
 }
 
@@ -83,5 +92,47 @@ document.getElementById("home-right").addEventListener("click", e =>
         if (content) content.classList.toggle("show");
     }
 });
+
+function bindZeroJudgeSelect() {
+    bindProblemSelect(
+        "problemSelect",
+        "BookmarkPages/APCS_Journey/ZerojudgeProblems/"
+    );
+}
+
+function bindLeetcodeSelect() {
+    bindProblemSelect(
+        "problemSelect",
+        "BookmarkPages/APCS_Journey/LeetcodeProblems/"
+    );
+}
+
+function bindProblemSelect(selectId, basePath) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+
+    select.addEventListener("change", () => {
+        const file = select.value;
+        if (!file) return;
+
+        fetch(basePath + file)
+            .then(res => res.text())
+            .then(html => {
+                const temp = document.createElement("div");
+                temp.innerHTML = html;
+
+                document.querySelector("#problem-desc .block-content").innerHTML =
+                    temp.querySelector(".problem-desc").innerHTML;
+
+                document.querySelector("#problem-solution .block-content").innerHTML =
+                    temp.querySelector(".problem-solution").innerHTML;
+
+                document.querySelector("#problem-code").innerHTML =
+                    temp.querySelector(".problem-code").innerHTML;
+            });
+    });
+}
+
+
 
 

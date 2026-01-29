@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () =>
         {
             const group = tab.closest(".tab-group");
 
-            //先把其他打開的關掉
             document.querySelectorAll(".tab-group.open").forEach(openGroup => 
             {
                 if (openGroup !== group) 
@@ -22,11 +21,10 @@ document.addEventListener("DOMContentLoaded", () =>
                 }
             });
 
-            //切換自己
             group.classList.toggle("open");
         });
     });
-    loadHomePage(); //一打開index.html就載入homepage
+    loadHomePage(); 
 });
 
 function loadPage(path, leftId, rightId) 
@@ -55,7 +53,8 @@ function loadPage(path, leftId, rightId)
         });
 }
 
-function loadHomePage() {
+function loadHomePage() 
+{
     fetch("BookmarkPages/Home.html")
         .then(res => res.text())
         .then(html => 
@@ -63,7 +62,6 @@ function loadHomePage() {
             const temp = document.createElement("div");
             temp.innerHTML = html;
 
-            //將內容填入現有的頁面容器中
             leftPage.innerHTML = temp.querySelector("#home-left").innerHTML;
             rightPage.innerHTML = temp.querySelector("#home-right").innerHTML;
 
@@ -109,30 +107,34 @@ function bindLeetcodeSelect() {
     );
 }
 
-function bindProblemSelect(selectId, basePath, defaultPath) {
+function bindProblemSelect(selectId, basePath, defaultPath) 
+{
     const select = document.getElementById(selectId);
     if (!select) return;
 
     loadDefaultPage(defaultPath);
 
-    select.addEventListener("change", () => {
-        const file = select.value;
-        if (!file) {
-            loadDefaultPage(defaultPath);
-            return;
-        }
+    select.addEventListener("change", () => 
+        {
+            const file = select.value;
+            if (!file) 
+            {
+                loadDefaultPage(defaultPath);
+                return;
+            }
 
-        fetch(basePath + file)
+            fetch(basePath + file)
             .then(res => res.text())
-            .then(html => {
+            .then(html => 
+            {
                 const temp = document.createElement("div");
                 temp.innerHTML = html;
 
-                // --- 復原 Block 結構 ---
-                // 使用 querySelector 找目前的左頁裡面的動態區域
                 const leftTarget = leftPage.querySelector("#zj-dynamic-content");
-                if (leftTarget) {
-                    leftTarget.innerHTML = `
+                if (leftTarget) 
+                {
+                    leftTarget.innerHTML = 
+                    `
                         <div class="block block-small" id="problem-desc">
                             <h3>題目敘述</h3>
                             <div class="block-content"></div>
@@ -144,13 +146,12 @@ function bindProblemSelect(selectId, basePath, defaultPath) {
                     `;
                 }
 
-                // 復原右頁結構
-                rightPage.innerHTML = `
+                rightPage.innerHTML = 
+                `
                     <h3>【程式碼】</h3>
                     <div class="block-content" id="problem-code"></div>
                 `;
 
-                // 填入內容
                 const desc = document.querySelector("#problem-desc .block-content");
                 const sol = document.querySelector("#problem-solution .block-content");
                 const code = document.querySelector("#problem-code");
@@ -162,34 +163,6 @@ function bindProblemSelect(selectId, basePath, defaultPath) {
     });
 }
 
-function loadDefaultPage(path) {
-    fetch(path)
-        .then(res => res.text())
-        .then(html => {
-            const temp = document.createElement("div");
-            temp.innerHTML = html;
-
-            // 抓取零件檔內容
-            const descContent = temp.querySelector(".problem-desc")?.innerHTML || "";
-            const solContent = temp.querySelector(".problem-solution")?.innerHTML || "";
-            const codeContent = temp.querySelector(".problem-code")?.innerHTML || "";
-
-            // 1. 處理左頁
-            const leftTarget = leftPage.querySelector("#zj-dynamic-content");
-            if (leftTarget) {
-                leftTarget.innerHTML = `
-                    <div class="default-text-area">
-                        ${descContent}
-                        ${solContent}
-                    </div>
-                `;
-            }
-
-            // 2. 處理右頁
-            rightPage.innerHTML = codeContent;
-        });
-}
-
 function loadDefaultPage(path) 
 {
     fetch(path)
@@ -198,24 +171,70 @@ function loadDefaultPage(path)
             const temp = document.createElement("div");
             temp.innerHTML = html;
 
-            // 1. 處理左頁：直接把內容塞進 zj-dynamic-content，這會暫時覆蓋掉那些 block
+            const descContent = temp.querySelector(".problem-desc")?.innerHTML || "";
+            const solContent = temp.querySelector(".problem-solution")?.innerHTML || "";
+            const codeContent = temp.querySelector(".problem-code")?.innerHTML || "";
+            const leftTarget = leftPage.querySelector("#zj-dynamic-content");
+            if (leftTarget) 
+            {
+                leftTarget.innerHTML = 
+                `
+                    <div class="default-text-area">
+                        ${descContent}
+                        ${solContent}
+                    </div>
+                `;
+            }
+            rightPage.innerHTML = codeContent;
+        });
+}
+
+function loadDefaultPage(path) 
+{
+    fetch(path)
+        .then(res => res.text())
+        .then(html => 
+        {
+            const temp = document.createElement("div");
+            temp.innerHTML = html;
+
             const leftTarget = document.getElementById("zj-dynamic-content");
-            if (leftTarget) {
-                // 我們把 Default.html 裡的 .problem-desc 和 .problem-solution 合併顯示
-                leftTarget.innerHTML = `
+            if (leftTarget) 
+            {
+                leftTarget.innerHTML = 
+                `
                     <div class="default-text-area">
                         ${temp.querySelector(".problem-desc")?.innerHTML || ""}
                         ${temp.querySelector(".problem-solution")?.innerHTML || ""}
                     </div>
                 `;
             }
-
-            // 2. 處理右頁：直接覆蓋整個右頁容器，不留「程式碼」標題
             rightPage.innerHTML = temp.querySelector(".problem-code")?.innerHTML || "";
         });
 }
 
+document.addEventListener("click", (e) => 
+{
+    if (e.target.tagName === 'IMG' && e.target.closest('.page')) 
+    {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("img01");
+        const captionText = document.getElementById("caption");
 
+        modal.style.display = "block";
+        modalImg.src = e.target.src;
+        captionText.innerHTML = e.target.alt || "圖片預覽";
+    }
+});
+
+document.addEventListener("click", (e) => 
+{
+    const modal = document.getElementById("imageModal");
+    if (e.target.classList.contains('modal') || e.target.classList.contains('close')) 
+    {
+        modal.style.display = "none";
+    }
+});
 
 
 

@@ -34,11 +34,13 @@ body
 }
 
 /* 捲軸 */
-.page::-webkit-scrollbar {
+.page::-webkit-scrollbar 
+{
     width: 6px;
 }
 
-.page::-webkit-scrollbar-thumb {
+.page::-webkit-scrollbar-thumb 
+{
     background-color: rgba(0,0,0,0.2);
     border-radius: 3px;
 }
@@ -125,9 +127,10 @@ body
     background-color: #f0f0f0;
     border-left: 3px solid #ffb6c1;
 }
+
 .expand-content.show 
 {
-    display: block;     /* 顯示 */
+    display: block;
     max-height: 500px;
 }
 
@@ -145,7 +148,7 @@ button.expand-btn
 {
     border: 2px solid #333;
     margin-top: 6px;
-    height: 140px;        /* 固定高度 */
+    height: 140px;  
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -158,7 +161,7 @@ button.expand-btn
 
 .block-large 
 {
-    height: 200px;   /* 解題思路用這個 */
+    height: 200px; 
 }
 
 
@@ -179,34 +182,91 @@ button.expand-btn
     flex: 1;
 }
 
-.default-text-area {
+.default-text-area 
+{
     margin-top: 20px;
     line-height: 1.6;
     color: #333;
     font-size: 18px;
 }
 
-/* 確保 Default 頁面的圖片不會爆出來 */
-.default-text-area img {
+.default-text-area img 
+{
     max-width: 100%;
     height: auto;
     border: 1px solid #ddd;
     margin-top: 10px;
 }
 
+/* 遮罩層背景 */
+.modal 
+{
+    display: none; /* 預設隱藏 */
+    position: fixed;
+    z-index: 9999; /* 確保在最上層 */
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9); 
+    cursor: zoom-out;
+}
+
+/* 放大後的圖片 */
+.modal-content 
+{
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 1000px;
+    animation: zoom 0.3s;
+}
+
+@keyframes zoom 
+{
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+.close 
+{
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.page img 
+{
+    cursor: zoom-in;
+    transition: 0.3s;
+}
+
+.page img:hover 
+{
+    opacity: 0.8;
+}
+
 
 /* 註：以下這些都沒有用？？？ */
 
-#home-right h3 {
+#home-right h3 
+{
     margin: 0 0 5px 0; /* 上 0，右 0，下 5px，左 0 */
 }
 
-#home-right ul {
+#home-right ul 
+{
     margin: 0 0 10px 20px; /* 上 0，下 10px，左縮排 20px */
     padding: 0;            /* 清掉預設 padding */
 }
 
-#home-right li {
+#home-right li 
+{
     margin: 0 0 4px 0;     /* li 之間間距 */
     padding: 0;
 }

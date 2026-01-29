@@ -1,5 +1,10 @@
 /* CSS STYLESHEET */
 
+*, *::before, *::after 
+{
+    box-sizing: border-box; /* 這是防止排版爆炸的最重要一行 */
+}
+
 body 
 {
     overflow-x: hidden;
@@ -70,7 +75,8 @@ body
 /* 左頁 */
 .left 
 {
-    width: 45%;
+    width: 40%;
+    box-sizing: border-box
 }
 
 /* 右頁 */

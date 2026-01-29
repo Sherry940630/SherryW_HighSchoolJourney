@@ -13,23 +13,44 @@ body
 
 .book 
 {
+    background-image: url(images/Assets/BookBase.png);
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat;
     display: flex;
     position: relative;
-    width: 75vw;   /* 依照視窗寬度自動縮放 */
+    width: 77vw;
     max-width: 900px;
-    height: 500px;
-    background-color: #fff;
-    border: 2px solid #333;
+    aspect-ratio: 3 / 2; 
+    margin: auto;
+}
+
+.book-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  
+    z-index: 0;
+}
+
+.book-ui {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    z-index: 5;
+    padding-left: 6%;
+    padding-right: 6%;
+    box-sizing: border-box;
 }
 
 /* 左右頁 */
 .page 
 {
+    z-index: 10;
     padding: 20px;
-    box-sizing: border-box;
     font-size:20px;
-
-    height: 100%;        /* 撐滿 book 高度 */
+    height: 90%; 
     overflow-y: auto;    /* 內容多就自己滾 */
 }
 
@@ -49,17 +70,16 @@ body
 .left 
 {
     width: 38%;
-    background-color: #e2f8ff;
 }
 
 /* 右頁 */
 .right 
 {
+    position: relative;
     width: 60%;
-    background-color: #eeeeff;
 }
 
-/* 書脊 */
+/* 書脊 
 .spine 
 {
     width: 2%;
@@ -68,17 +88,17 @@ body
     align-items: center;
     justify-content: center;
 }
+*/
 
 /* 書籤 */
 .tabs 
 {
     position: absolute;
-    left: 100%; /*貼在書右邊*/
+    left: 100%; /*right: -24px;*/
     top: 10%;
     display: flex; /*這個沒有好像也不會怎樣？？*/
     flex-direction: column;
     align-items: flex-start;
-
     cursor: pointer;
 } 
 
@@ -198,48 +218,6 @@ button.expand-btn
     margin-top: 10px;
 }
 
-/* 遮罩層背景 */
-.modal 
-{
-    display: none; /* 預設隱藏 */
-    position: fixed;
-    z-index: 9999; /* 確保在最上層 */
-    padding-top: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9); 
-    cursor: zoom-out;
-}
-
-/* 放大後的圖片 */
-.modal-content 
-{
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 1000px;
-    animation: zoom 0.3s;
-}
-
-@keyframes zoom 
-{
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-}
-
-.close 
-{
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 .page img 
 {
     cursor: zoom-in;
@@ -250,25 +228,3 @@ button.expand-btn
 {
     opacity: 0.8;
 }
-
-
-/* 註：以下這些都沒有用？？？ */
-
-#home-right h3 
-{
-    margin: 0 0 5px 0; /* 上 0，右 0，下 5px，左 0 */
-}
-
-#home-right ul 
-{
-    margin: 0 0 10px 20px; /* 上 0，下 10px，左縮排 20px */
-    padding: 0;            /* 清掉預設 padding */
-}
-
-#home-right li 
-{
-    margin: 0 0 4px 0;     /* li 之間間距 */
-    padding: 0;
-}
-
-

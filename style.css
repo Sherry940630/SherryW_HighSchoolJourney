@@ -19,7 +19,7 @@ body
     background-repeat: no-repeat;
     display: flex;
     position: relative;
-    width: 77vw;
+    width: 78vw;
     max-width: 900px;
     aspect-ratio: 3 / 2; 
     margin: auto;
@@ -41,6 +41,7 @@ body
     z-index: 5;
     padding-left: 6%;
     padding-right: 6%;
+    padding-top: 4%;
     box-sizing: border-box;
 }
 
@@ -69,13 +70,14 @@ body
 /* 左頁 */
 .left 
 {
-    width: 38%;
+    width: 45%;
 }
 
 /* 右頁 */
 .right 
 {
-    position: relative;
+    box-sizing: border-box;
+    padding-left: 10%;
     width: 60%;
 }
 
@@ -94,7 +96,7 @@ body
 .tabs 
 {
     position: absolute;
-    left: 100%; /*right: -24px;*/
+    left: 94%; /*right: -24px;*/
     top: 10%;
     display: flex; /*這個沒有好像也不會怎樣？？*/
     flex-direction: column;

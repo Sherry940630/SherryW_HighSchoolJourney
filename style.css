@@ -16,6 +16,18 @@ body
     margin: 0;
 }
 
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    text-align: center;
+}
+
 .book 
 {
     background-image: url(images/Assets/BookBase.png);
@@ -46,7 +58,7 @@ body
     z-index: 5;
     padding-left: 6%;
     padding-right: 6%;
-    padding-top: 4%;
+    padding-top: 7%;
     box-sizing: border-box;
 }
 
@@ -54,7 +66,7 @@ body
 .page 
 {
     z-index: 10;
-    padding: 20px;
+    padding: 25px;
     font-size:20px;
     height: 90%; 
     overflow-y: auto;    /* 內容多就自己滾 */
@@ -112,12 +124,17 @@ body
 
 .tab
 {
+    background-image: url(images/Assets/BookmarkBase.png);
+    background-color: transparent;
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
     white-space: nowrap; /*不換行*/
-    background-color: #ffb6c1;
     text-decoration: none;
     padding: 10px 16px;
     margin-bottom: 5px;
-    border-radius: 0 10px 10px 0; /*角角圓圓的*/
+    border: none; 
+    outline: none;
 }
 
 .sub-tabs 

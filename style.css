@@ -189,6 +189,11 @@ button.expand-btn
     text-align: left;
 }
 
+button.expand-btn:hover
+{
+    color: #ca6d9a;
+}
+
 .block 
 {
     border: 2px solid #333;

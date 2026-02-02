@@ -258,3 +258,31 @@ button.expand-btn:hover
 {
     opacity: 0.8;
 }
+
+/* ===== 放大圖片用的 ===== */
+
+#image-modal 
+{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: zoom-out;
+}
+
+#image-modal.show 
+{
+    display: flex;
+}
+
+#image-modal-img 
+{
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    background: white;
+}

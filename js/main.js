@@ -212,3 +212,37 @@ function loadDefaultPage(path)
             rightPage.innerHTML = temp.querySelector(".problem-code")?.innerHTML || "";
         });
 }
+
+// ===== 放大圖片用的 =====
+
+const modal = document.getElementById("image-modal");
+const modalImg = document.getElementById("image-modal-img");
+
+//事件委派：所有 page 裡的 img 都能點
+document.addEventListener("click", e => 
+{
+    const img = e.target;
+
+    if (img.tagName === "IMG" && img.closest(".page")) 
+    {
+        modalImg.src = img.src;
+        modal.classList.add("show");
+    }
+});
+
+//點背景關閉
+modal.addEventListener("click", () => 
+{
+    modal.classList.remove("show");
+    modalImg.src = "";
+});
+
+//ESC關閉
+document.addEventListener("keydown", e => 
+{
+    if (e.key === "Escape") 
+    {
+        modal.classList.remove("show");
+        modalImg.src = "";
+    }
+});

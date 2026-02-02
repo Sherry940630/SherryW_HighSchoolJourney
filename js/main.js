@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () =>
     loadHomePage(); 
 
     // ===== 放大圖片用的 =====
-
     document.addEventListener("click", (e) => 
     {
     const modal = document.getElementById("image-modal");
@@ -35,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () =>
 
     console.log("Click detected on:", e.target.tagName, e.target.id, e.target.closest("#leftPage"), e.target.closest("#rightPage"));
 
-    // 1. Check if we clicked an image inside leftPage or rightPage
     if (e.target.tagName === "IMG" && 
         (e.target.closest("#leftPage") || e.target.closest("#rightPage"))) 
     {
@@ -43,8 +41,7 @@ document.addEventListener("DOMContentLoaded", () =>
         modalImg.src = e.target.src;
         console.log("Modal opened for:", e.target.src);
     }
-    
-    // 2. Check if we clicked the modal background (not the image itself)
+
     else if (e.target.id === "image-modal") 
         {
         console.log("Modal background clicked, closing...");
@@ -53,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () =>
     }
     });
 
-    // Close modal with Escape key
+    //Close modal with Escape key
     document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
         console.log("Escape key pressed");
@@ -129,16 +126,20 @@ document.getElementById("home-right").addEventListener("click", e =>
     }
 });
 
-function bindZeroJudgeSelect() {
-    bindProblemSelect(
+function bindZeroJudgeSelect() 
+{
+    bindProblemSelect
+    (
         "problemSelect",
         "BookmarkPages/APCS_Journey/ZerojudgeProblems/",
         "BookmarkPages/APCS_Journey/ZerojudgeProblems/ZerojudgeDefault.html"
     );
 }
 
-function bindLeetcodeSelect() {
-    bindProblemSelect(
+function bindLeetcodeSelect() 
+{
+    bindProblemSelect
+    (
         "problemSelect",
         "BookmarkPages/APCS_Journey/LeetcodeProblems/",
         "BookmarkPages/APCS_Journey/LeetcodeProblems/LeetcodeDefault.html"

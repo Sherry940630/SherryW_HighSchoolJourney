@@ -215,34 +215,33 @@ function loadDefaultPage(path)
 
 // ===== 放大圖片用的 =====
 
-const modal = document.getElementById("image-modal");
-const modalImg = document.getElementById("image-modal-img");
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("image-modal-img");
 
-//事件委派：所有 page 裡的 img 都能點
-document.addEventListener("click", e => 
-{
-    const img = e.target;
+    // We listen to the whole body, so even dynamically loaded images are caught
+    document.body.addEventListener("click", e => {
+        const target = e.target;
 
-    if (img.tagName === "IMG" && img.closest(".page")) 
-    {
-        modalImg.src = img.src;
-        modal.classList.add("show");
-    }
-});
+        // Check if the clicked element is an image AND inside a .page container
+        if (target.tagName === "IMG" && target.closest(".page")) {
+            console.log("Image clicked:", target.src); // Debugging line
+            modalImg.src = target.src;
+            modal.classList.add("show");
+        }
+    });
 
-//點背景關閉
-modal.addEventListener("click", () => 
-{
-    modal.classList.remove("show");
-    modalImg.src = "";
-});
-
-//ESC關閉
-document.addEventListener("keydown", e => 
-{
-    if (e.key === "Escape") 
-    {
+    // Close modal when clicking background
+    modal.addEventListener("click", () => {
         modal.classList.remove("show");
         modalImg.src = "";
-    }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+            modal.classList.remove("show");
+            modalImg.src = "";
+        }
+    });
 });

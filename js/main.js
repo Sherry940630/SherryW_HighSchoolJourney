@@ -215,33 +215,29 @@ function loadDefaultPage(path)
 
 // ===== 放大圖片用的 =====
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("click", (e) => {
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("image-modal-img");
 
-    // We listen to the whole body, so even dynamically loaded images are caught
-    document.body.addEventListener("click", e => {
-        const target = e.target;
-
-        // Check if the clicked element is an image AND inside a .page container
-        if (target.tagName === "IMG" && target.closest(".page")) {
-            console.log("Image clicked:", target.src); // Debugging line
-            modalImg.src = target.src;
-            modal.classList.add("show");
-        }
-    });
-
-    // Close modal when clicking background
-    modal.addEventListener("click", () => {
+    // 1. Check if we clicked an image inside a page
+    if (e.target.tagName === "IMG" && e.target.closest(".page")) {
+        modal.classList.add("show");
+        modalImg.src = e.target.src;
+        console.log("Modal opened for:", e.target.src);
+    }
+    
+    // 2. Check if we clicked the modal background (not the image itself)
+    else if (e.target.id === "image-modal") {
         modal.classList.remove("show");
         modalImg.src = "";
-    });
+    }
+});
 
-    // Close modal with Escape key
-    document.addEventListener("keydown", e => {
-        if (e.key === "Escape") {
-            modal.classList.remove("show");
-            modalImg.src = "";
-        }
-    });
+// Close modal with Escape key
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        const modal = document.getElementById("image-modal");
+        modal.classList.remove("show");
+        document.getElementById("image-modal-img").src = "";
+    }
 });

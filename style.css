@@ -203,6 +203,23 @@ button.expand-btn:hover
     color: #ca6d9a;
 }
 
+.collapse-btn 
+{
+    margin: 10px auto 8px;
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.collapse-btn:hover 
+{
+    color: #ca6d9a;
+}
+
+
 .block 
 {
     border: 2px solid #333;

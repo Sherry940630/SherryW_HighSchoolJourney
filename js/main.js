@@ -51,8 +51,10 @@ document.addEventListener("DOMContentLoaded", () =>
     });
 
     //Close modal with Escape key
-    document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
+    document.addEventListener("keydown", (e) => 
+    {
+    if (e.key === "Escape") 
+    {
         console.log("Escape key pressed");
         const modal = document.getElementById("image-modal");
         modal.classList.remove("show");
@@ -100,20 +102,38 @@ function loadHomePage()
             leftPage.innerHTML = temp.querySelector("#home-left").innerHTML;
             rightPage.innerHTML = temp.querySelector("#home-right").innerHTML;
 
-            rightPage.addEventListener("click", (e) => 
-            {
-                const btn = e.target.closest(".expand-btn");
-                if (!btn) return;
+            rightPage.addEventListener("click", (e) => {
 
-                const item = btn.closest(".expand-item");
-                if (!item) return;
-
-                const content = item.querySelector(".expand-content");
-                if (content) 
+                // === 展開 ===
+                const expandBtn = e.target.closest(".expand-btn");
+                if (expandBtn) 
                 {
-                    content.classList.toggle("show");
+                    const item = expandBtn.closest(".expand-item");
+                    const content = item.querySelector(".expand-content");
+                    if (content) content.classList.toggle("show");
+                    return;
+                }
+                // === 縮小 ===
+                const collapseBtn = e.target.closest(".collapse-btn");
+                if (collapseBtn) 
+                {
+                    const content = collapseBtn.closest(".expand-content");
+                    if (!content) return;
+
+                    const item = content.closest(".expand-item");
+                    const titleBtn = item.querySelector(".expand-btn");
+
+                    content.classList.remove("show");
+
+                    titleBtn.scrollIntoView(
+                {
+                    behavior: "smooth",
+                    block: "start"
+                });
+                    return;
                 }
             });
+
         });
 }
 

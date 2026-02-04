@@ -100,18 +100,20 @@ function loadHomePage()
             leftPage.innerHTML = temp.querySelector("#home-left").innerHTML;
             rightPage.innerHTML = temp.querySelector("#home-right").innerHTML;
 
-            rightPage.onclick = (e) => 
+            rightPage.addEventListener("click", (e) => 
             {
-                if (e.target.classList.contains("expand-btn")) 
+                const btn = e.target.closest(".expand-btn");
+                if (!btn) return;
+
+                const item = btn.closest(".expand-item");
+                if (!item) return;
+
+                const content = item.querySelector(".expand-content");
+                if (content) 
                 {
-                    const li = e.target.closest("li");
-                    const content = li.querySelector(".expand-content");
-                    if (content) 
-                    {
-                        content.classList.toggle("show");
-                    }
+                    content.classList.toggle("show");
                 }
-            };
+            });
         });
 }
 

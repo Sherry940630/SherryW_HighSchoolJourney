@@ -134,7 +134,7 @@ h2 {
     background-position: center;
     white-space: nowrap; /*不換行*/
     text-decoration: none;
-    padding: 10px 16px;
+    padding: 10px 20px;
     margin-bottom: 5px;
     border: none; 
     outline: none;
@@ -166,6 +166,11 @@ h2 {
 .tab-group.open .sub-tabs 
 {
   display: block;
+}
+
+.tab:hover 
+{
+    cursor: pointer;
 }
 
 /* 主頁那些展開的list東東 */

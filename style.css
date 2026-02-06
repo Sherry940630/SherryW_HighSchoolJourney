@@ -181,7 +181,7 @@ h2 {
     max-height: 250px;
     margin-top: 1px;    
     /* 格式：上 右 下 左 */
-    padding: 0px 15px 0px 23px;
+    padding: 8px 15px 0px 23px;
     background-color: transparent;
     background-image: url(images/Assets/StickyNoteBase.png);
     background-size:cover;

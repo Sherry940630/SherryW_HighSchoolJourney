@@ -62,6 +62,36 @@ document.addEventListener("DOMContentLoaded", () =>
     }
     });
 
+    //expand & collapse
+    rightPage.addEventListener("click", (e) => 
+    {
+
+        // === 展開 ===
+        const expandBtn = e.target.closest(".expand-btn");
+        if (expandBtn) {
+            const item = expandBtn.closest(".expand-item");
+            const content = item?.querySelector(".expand-content");
+            if (content) content.classList.toggle("show");
+            return;
+        }
+
+        // === 縮小 ===
+        const collapseBtn = e.target.closest(".collapse-btn");
+        if (collapseBtn) 
+        {
+            const content = collapseBtn.closest(".expand-content");
+            const item = content?.closest(".expand-item");
+            const titleBtn = item?.querySelector(".expand-btn");
+
+            if (content) content.classList.remove("show");
+
+            titleBtn?.scrollIntoView
+            ({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    });
 });
 
 function loadPage(path, leftId, rightId) 
@@ -102,51 +132,8 @@ function loadHomePage()
             leftPage.innerHTML = temp.querySelector("#home-left").innerHTML;
             rightPage.innerHTML = temp.querySelector("#home-right").innerHTML;
 
-            rightPage.addEventListener("click", (e) => {
-
-                // === 展開 ===
-                const expandBtn = e.target.closest(".expand-btn");
-                if (expandBtn) 
-                {
-                    const item = expandBtn.closest(".expand-item");
-                    const content = item.querySelector(".expand-content");
-                    if (content) content.classList.toggle("show");
-                    return;
-                }
-                // === 縮小 ===
-                const collapseBtn = e.target.closest(".collapse-btn");
-                if (collapseBtn) 
-                {
-                    const content = collapseBtn.closest(".expand-content");
-                    if (!content) return;
-
-                    const item = content.closest(".expand-item");
-                    const titleBtn = item.querySelector(".expand-btn");
-
-                    content.classList.remove("show");
-
-                    titleBtn.scrollIntoView(
-                {
-                    behavior: "smooth",
-                    block: "start"
-                });
-                    return;
-                }
-            });
-
         });
 }
-
-
-document.getElementById("home-right").addEventListener("click", e => 
-{
-    if (e.target.classList.contains("expand-btn")) 
-    {
-        const li = e.target.closest("li");
-        const content = li.querySelector(".expand-content");
-        if (content) content.classList.toggle("show");
-    }
-});
 
 function bindZeroJudgeSelect() 
 {
